@@ -24,14 +24,16 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn -B package --file pom.xml
-  Deploy:
+  deploy:
+    name: Deploy
+    needs: build
     runs-on: self-hosted
     steps:
-      - uses: actions/checkout@v2 
-      - name: Deploy in EC2
+      - uses: actions/checkout@master
+      - name: Deploy to ec2
         env:
-            PRIVATE_KEY: ${{ secrets.AWS_PRIVATE_KEY  }}
-            HOST_NAME:  ${{ secrets.AWS_HOST_NAME }}
+          SSH_PRIVATE_KEY: ${{ secrets.AWS_PRIVATE_KEY }}
+          SSH_HOST_NAME: ${{ secrets.HOST_NAME }}
         
            
            
