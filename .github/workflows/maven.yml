@@ -33,3 +33,4 @@ jobs:
       - name: Deploy in EC2
         env:
             PRIVATE_KEY: ${{ secrets.AWS_PRIVATE_KEY  }}
+            HOST_NAME:  ${{ secrets.AWS_HOST_NAME }}
