@@ -35,7 +35,6 @@ jobs:
           Username: root
           SSH_PRIVATE_KEY: ${{ secrets.AWS_PRIVATE_KEY }}
           SSH_HOST_NAME: ${{ secrets.AWS_HOST_NAME }}
-          Port: 80
         run: |
            echo "hello world"
           
