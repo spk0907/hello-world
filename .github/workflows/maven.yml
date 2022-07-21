@@ -29,9 +29,8 @@ jobs:
     needs: build
     runs-on: self-hosted
     steps:
-      - uses: actions/ssh-deploy@master
-      - name: Deploy to ec2
-     
+      - uses: actions/checkout@master
+      - name: Download Artifact
         env:
           Username: root
           SSH_PRIVATE_KEY: ${{ secrets.AWS_PRIVATE_KEY }}
