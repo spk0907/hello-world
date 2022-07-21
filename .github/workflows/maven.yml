@@ -37,7 +37,7 @@ jobs:
           SSH_HOST_NAME: ${{ secrets.AWS_HOST_NAME }}
           SOURCE: "./"
           REMOTE_HOST: "ec2-54-172-149-11.compute-1.amazonaws.com"
-          TARGET: "/actions-runner/_work/hello-world/hello-world/webapp/src/main/webapp/index.jsp"
+          TARGET: "/home/ubuntu/"
         run: |
            echo "hello world"
           
