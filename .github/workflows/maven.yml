@@ -11,9 +11,7 @@ on:
 
 jobs:
   build:
-
     runs-on: self-hosted
-
     steps:
     - uses: actions/checkout@v3
     - name: Set up JDK 11
@@ -24,3 +22,20 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn -B package --file pom.xml
+  deploy:
+    name: Deploy to EC2 on master branch push
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout the files
+        uses: actions/checkout@v2
+
+      - name: Deploy to Server 1
+        uses: easingthemes/ssh-deploy@main
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.AWS_PRIVATE_KEY }}
+          REMOTE_HOST: ${{ secrets.AWS_HOST_NAME }}
+          REMOTE_USER: ${{ secrets.USERNAME }}
+          TARGET: ${{ secrets.TARGET_DIR }}
+
+     
